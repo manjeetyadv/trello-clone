@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import { LoginContext } from './loginContext';
+import './assets/scss/index.scss';
+import { getItemFromSessionStore } from './helpers/utils.js';
+const Login = React.lazy(() => import('./components/Auth/login'));
+const Register = React.lazy(() => import('./components/Auth/register'));
+const Layout = React.lazy(() => import('./layout'));
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [authed, setAuthed] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loggedIn = getItemFromSessionStore('employeeId');
+    if (loggedIn) {
+      setAuthed(true);
+    }
+    setLoading(false);
+  }, []);
+  return loading ? (
+    'loading...'
+  ) : (
+    <LoginContext.Provider value={{ authed, setAuthed }}>
+      <BrowserRouter>
+        <React.Suspense fallback={loading}>
+          <Switch>
+            <Route path='/login' exact component={Login} />
+            <Route path='/register' exact component={Register} />
+            <Route path='/' name='Board' component={authed ? Layout : Login} />
+          </Switch>
+        </React.Suspense>
+      </BrowserRouter>
+    </LoginContext.Provider>
   );
 }
 

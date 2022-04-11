@@ -1,0 +1,101 @@
+// Common
+html,
+body,
+#root {
+  height: 100%;
+}
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+a {
+  text-decoration: none !important;
+}
+// Btn
+.btn-primary {
+  background-color: #a5e400 !important;
+  border-color: #a5e400 !important;
+}
+.btn-outline-primary {
+  color: #a5e400 !important;
+  border-color: #a5e400 !important;
+  &:hover {
+    color: #fff !important;
+    background-color: #a5e400 !important;
+  }
+}
+.bg-primary {
+  background-color: #a5e400 !important;
+  border-color: #a5e400 !important;
+}
+.text-primary {
+  color: #a5e400 !important;
+}
+// Header
+
+.search-border {
+  border-radius: 23px !important;
+}
+.brand-logo {
+  height: 50px;
+  width: 50px;
+  border-radius: 11px;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+.avatar-img {
+  height: 32px;
+  width: 32px;
+  margin: auto;
+}
+.vl {
+  border-left: 1px solid #a5e400;
+}
+.input-icons i {
+  position: absolute;
+}
+
+.input-icons {
+  width: 100%;
+}
+
+.icon {
+  padding: 10px;
+}
+
+.input-field {
+  text-align: center;
+}
+.active_nav {
+  color: #a5e400 !important;
+  border-bottom: 1px solid #a5e400 !important;
+}
+#js-licensing{
+  display: none !important;
+}
+.offcanvas-end{
+  width: 600px !important;
+}
+.tag-field{
+  margin-right: 5px;
+    line-height: 1.1;
+    font-size: 13px;
+    border-radius: 3px;
+    padding: 4px;
+}
+@media (min-width: 1440px) {
+  .navbar-nav{
+    max-height: 100px;
+    position: absolute;
+    left: 66px;
+    top: 35px;
+  }
+ .navbar-collapse form{
+  right: 17px;
+  position: absolute;
+  width: max-content;
+ }
+}
